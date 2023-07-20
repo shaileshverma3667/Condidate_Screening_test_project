@@ -1,0 +1,41 @@
+.predefined_box{
+    margin-left:10px;
+    margin-top:2.2em;
+}
+
+.total_predefined{
+    height: 1.9em;
+    width: 32.3em;
+    border-radius: 5px;
+    border: 1px solid rgb(192, 190, 190);
+}
+.total_pre_label,.technology_label{
+    font-size: 20px;
+}
+.techology_field{
+    margin-top:1em;
+    float: left;
+}
+.pre_technology{
+    margin-top: 8px;
+    width: 17.5em;
+}
+.Question_type_field{
+    margin-top:1em;
+    float: left;  
+    margin-left: 4em;
+}
+.field_btn{
+    margin-top:2.4em;   
+}
+.search_btn,.clear_btn,.add_new_btn{
+    height:2em;
+    margin:.4em;
+    border: none;
+    background-color: blue;
+    color:white;
+    border-radius: 5px;
+    padding:.5em;
+    box-sizing: border-box;
+    font-size: 1.2em;
+}

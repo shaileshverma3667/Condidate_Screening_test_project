@@ -1,12 +1,11 @@
-//import './App.css';
+// import AddNewQuestion from './Components/AddNewQuestion';
 import QuestionField from './Components/QuestionField';
-import RandomQuestionField from './Components/RandomQuestionField';
 function App() {
   return (
    <>
    <div className='test_title'>Condidate Screening Test Creation </div>
    <QuestionField/>
-    <RandomQuestionField/>
+  
    </>
   );
 }

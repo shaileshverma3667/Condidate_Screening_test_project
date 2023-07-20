@@ -1,0 +1,98 @@
+.addNewQuestion_box{
+    margin-left:10px;
+    margin-top:2.5em;
+    position: absolute;
+    top: 37rem;
+    right: 2em;
+    z-index: 1;
+  background-color: rgb(237, 219, 196);
+  padding: 1em;
+  box-sizing: border-box;
+}
+.newQuestionText{
+    font-size: 1.5em;
+    margin-left: 5em;
+    font-weight: bold;
+}
+.add_technology,.question_type{
+    margin-top: 10px;
+    width: 35.5em;
+}
+.Tecno_label,.question_label,.question_title_label{
+    font-size: 20px; 
+}
+.question_type_field,.question_title_field{
+   margin-top:.6em;
+}
+.question_title_input{
+    height: 1.9em;
+    width: 32.3em;
+    border-radius: 5px;
+    border: 1px solid rgb(192, 190, 190);
+    margin-top: 10px;
+}
+.create_btn,.save_create_btn{
+    height:2em;
+    margin:.4em;
+    border: none;
+    background-color: blue;
+    color:white;
+    border-radius: 5px;
+    padding:.5em;
+    box-sizing: border-box;
+    font-size: 1.2em;
+}
+.cancle_btn
+{
+    height:2em;
+    margin:.4em;
+    margin-left: 5em;
+    border: none;
+    background-color: red;
+    color:white;
+    border-radius: 5px;
+    padding:.5em;
+    box-sizing: border-box;
+    font-size: 1.2em
+}
+.plus_add_btn{
+     height: 1.8em;
+     width: 1.8em;
+     border-radius: 50%;
+     margin-left: 1em;
+     border: none;
+     background-color: rgb(182, 243, 182);
+     border: 1px solid  rgb(4, 190, 4);
+     font-weight: bold;
+     color:rgb(4, 190, 4);
+  }
+.anwerOption{
+    border-radius: 5px;
+    height: 1.9em;
+    border-radius: 5px;
+    border: 1px solid rgb(192, 190, 190);
+}
+.minus_btn_option{
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 50%;
+    margin-left: 1em;
+    border: none;
+    background-color: rgb(232, 223, 222);
+    border: 1px solid  rgba(190, 35, 4, 0.879);
+    font-weight: bold;
+    color:rgb(255, 45, 26);
+    margin-top: 2em;
+}
+.minus_btn_field{
+ display: flex;
+ margin-left: 1em;
+}
+.AddNew_checkBox{
+    margin-top: 1em;
+}
+.ans_option{
+    margin-top:1.2em;
+    color:green;
+    font-weight: bold;
+}
