@@ -5,9 +5,10 @@
     top: 37rem;
     right: 2em;
     z-index: 1;
-  background-color: rgb(237, 219, 196);
-  padding: 1em;
-  box-sizing: border-box;
+    background-color: rgb(243, 227, 206);
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 .newQuestionText{
     font-size: 1.5em;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./style/QuestionField.css"
 import Creatable from "react-select/creatable"
 import { options } from './selectData'
@@ -8,19 +8,11 @@ import { ScreeningType } from './selectData'
 import Select from 'react-select'
 import RadioMcq from './RadioMcq'
 import RandomQuestionField from './RandomQuestionField'
+import { creatAPI } from '../App'
 
 const QuestionField = () => {
-    const [formData, setFormData] = useState({
-        testname: "",
-        testType: "",
-        managedBy: "",
-        isMcq: false,
-        screeningType: "",
-        TotalQuestion:0,
-       
-
-    })
-    console.log(formData)
+const{formData,setFormData}=useContext(creatAPI)   
+  
 
     function handleSubmit(e)
     {
@@ -34,7 +26,7 @@ const QuestionField = () => {
                 <form onSubmit={handleSubmit}>
                     <div className='test_name'>
                         <Label label={"test Name"} className={"test_name_label"} />
-                        <input type="text" className='test_type_field' onChange={(e) => setFormData({ "testname":Number(e.target.value)})} placeholder='Enter test name'/>
+                        <input type="text" className='test_type_field' onChange={(e) => setFormData({"testname":e.target.value})} placeholder='Enter test name'/>
                         <button className='plus_btn'>+</button>
                     </div>
 
@@ -61,7 +53,7 @@ const QuestionField = () => {
 
                     <div className='totalNoQuField'>
                         <Label label={"Total Number of Question"} className={"totalnoq"} />
-                        <input type="number" value={formData.TotalQuestion} className='totalNumberfield' onChange={(e) => setFormData({ ...formData, "TotalQuestion":Number(e.target.value)})} />
+                        <input type="number"  className='totalNumberfield' onChange={(e) => setFormData({ ...formData, "TotalQuestion":Number(e.target.value)})} />
                     </div>
                     {formData.TotalQuestion? <RandomQuestionField formData={formData} setFormData={setFormData}/>:""}
                     <div className='submit_final_btn_box'>
