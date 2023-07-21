@@ -12,6 +12,7 @@
     float: left; 
     margin-left: 5em;
     background-color:white;
+    font-weight: bold;
 }
 .predefinedQuestion_btn{
     margin-left: 15em;
@@ -20,7 +21,9 @@
     font-size: 1em;
     border: none;
     background-color:white;
+    font-weight: bold;
 }
+
 
 .random_box{
     margin-left:8px;

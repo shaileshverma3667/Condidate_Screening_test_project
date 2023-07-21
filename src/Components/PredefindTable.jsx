@@ -1,33 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import axios from 'axios'
 
-const columns=[
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 90,
-    },
-    {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params)=>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    },
-  ];
-
-  const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  ];
 
 export default function  PredefindTable() {
+
+const [axiosData,setAxiosData]=useState([])
+const columns= [
+  { field: 'id', headerName: 'ID', width:100 },
+  { field: 'title', headerName: 'Question Title', width:200 },
+  { field: 'technology', headerName: 'Technology', width: 130 },
+  { field: 'question_type', headerName: 'Question Type', width: 130 },  
+];
+const [rows,setRows]=useState([]);
+
+
+  const FetchData=()=>{
+  return  axios.get("http://localhost:5000/AddNewQuestion").then((res)=>setAxiosData(res.data))
+}
+   const temp=axiosData.map((item,index)=>{
+   return {id:item.id,"title":item?.QuestionTitle,"technology":item?.AddTechnology,"question_type":item?.QuestionType }
+    });
+ 
+   useEffect(()=>{
+      FetchData();
+      setRows(temp);
+      
+
+   },[])
+  //  console.log(table)
   return (
     <div style={{ height: 340, maxWidth: '60%' }}>
     <DataGrid

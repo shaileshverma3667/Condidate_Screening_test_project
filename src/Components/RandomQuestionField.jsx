@@ -18,13 +18,13 @@ const RandomQuestionField = () => {
       if (formData.TotalQuestion >= value) {
         setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]: Number(value) } });
       } else {
-        toast("message alert")
+        toast("Enter the valid number")
       }
     } else {
       if (formData.RandomQuestionData.randomq >= value) {
         setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]: Number(value) } });
       } else {
-        toast("message alert")
+        toast("Enter the valid number")
       }
     }
   }

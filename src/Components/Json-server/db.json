@@ -1,0 +1,17 @@
+{
+  "AddNewQuestion": [
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "sdgfdh",
+      "options": {
+        "option1": "asdfa",
+        "option2": "asdf",
+        "option3": "afd",
+        "option4": "adfasf"
+      },
+      "correctOption": "option2",
+      "id": 1
+    }
+  ]
+}
