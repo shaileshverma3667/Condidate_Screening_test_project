@@ -1,0 +1,39 @@
+{
+  "AddNewQuestion": [
+    {
+      "AddTechnology": "react",
+      "QuestionType": "programming",
+      "QuestionTitle": "what is react",
+      "options": {},
+      "id": 1
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "what is mcq",
+      "options": {},
+      "id": 2
+    },
+    {
+      "AddTechnology": "python",
+      "QuestionType": "programming",
+      "QuestionTitle": "what is python",
+      "options": {},
+      "id": 3
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "programming",
+      "QuestionTitle": "what is feature of react",
+      "options": {},
+      "id": 4
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "what is react",
+      "options": {},
+      "id": 5
+    }
+  ]
+}

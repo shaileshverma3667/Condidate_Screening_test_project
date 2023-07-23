@@ -9,20 +9,26 @@ import Select from 'react-select'
 import RadioMcq from './RadioMcq'
 import RandomQuestionField from './RandomQuestionField'
 import { creatAPI } from '../App'
+import { toast } from 'react-toastify'
 
 const QuestionField = () => {
     const [createData,setCreateData]=useState(options)
     const createfield=(inputValue)=>{
             setCreateData((prev)=>([...prev,{"value":inputValue,"label":inputValue}]))
     }
-
 const{formData,setFormData}=useContext(creatAPI)   
     function handleSubmit(e)
     {
         e.preventDefault()
         console.log(formData)
     }
-
+    const onChangeTotalNumber=(e)=>{
+        if(e.target.value<0)
+         toast.error("Enter number of grater then 0")
+         else
+         setFormData({ ...formData,[e.target.name]:e.target.value})
+       
+    }
     return (
         <>
             <div className='container'>
@@ -30,19 +36,19 @@ const{formData,setFormData}=useContext(creatAPI)
                      <div className='test_name'>
                           <Label label={"test Name"} 
                            className={"test_name_label"} />
-                          <input type="text" 
+                           <input type="text" 
                            className='test_type_field' 
-                           onChange={(e) => setFormData({"testname":e.target.value})} 
+                           name="testname"
+                           onChange={onChangeTotalNumber} 
                            placeholder='Enter test name'/>
-                          <button className='plus_btn'>+</button>
                     </div>
 
                     <div className='select_test_type'>
                          <Label label={"Select test type or add new test type :"} 
                           className={"test_type_label"} />
-                         <Creatable options={createData} 
-                          onCreateOption={createfield}
-                         onChange={(e) => setFormData({ ...formData, "testType": e.value })} />
+                          <Creatable options={createData} 
+                           onCreateOption={createfield}
+                           onChange={(e) => setFormData({ ...formData, "testType": e.value })} />
                     </div>
 
                     <div className='managedBy_field'>
@@ -63,10 +69,9 @@ const{formData,setFormData}=useContext(creatAPI)
 
                     <div className='totalNoQuField'>
                         <Label label={"Total Number of Question"} className={"totalnoq"} />
-                        <input type="number"  className='totalNumberfield' onChange={(e) => setFormData({ ...formData, "TotalQuestion":Number(e.target.value)})} />
+                        <input type="number" name="TotalQuestion"  className='totalNumberfield' onChange={onChangeTotalNumber} />
                     </div>
-                    {formData.TotalQuestion? <RandomQuestionField
-                     formData={formData} setFormData={setFormData}/>:""}
+                     {formData.TotalQuestion? <RandomQuestionField/>:""}
                     <div className='submit_final_btn_box'>
                         <button className='submit_btn'>Submit Condidate Test</button>
                         <button className='final_Submit_btn'>Final Submit</button>

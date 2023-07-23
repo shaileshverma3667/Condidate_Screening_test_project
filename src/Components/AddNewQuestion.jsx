@@ -6,22 +6,19 @@ import { AddNew_technology, AddNewquestion_type, Question_type } from './selectD
 import "./style/AddNewQuestion.css"
 import { creatAPI } from '../App'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+
 const AddNewQuestion = ({ setAddNew }) => {
     const { formData, setFormData } = useContext(creatAPI)
     const [option, setOption] = useState([])
-    const [addNewQuestion, setAddNewQuestion] = useState({
-        AddTechnology: [],
-        QuestionType: '',
-        QuestionTitle: '',
-        options: {},
-    })
-    console.log(addNewQuestion)
+    const initialState={ AddTechnology:"", QuestionType: '', QuestionTitle: '',options: {}}
+    const [addNewQuestion, setAddNewQuestion] = useState(initialState)
+    
     //option handle
     const handleOption = () => {
         setOption([...option, 0])
     }
     const handleDelete = (index) => {
-        console.log(index)
         let copyData = [...option]
         copyData.splice(index, 1)
         setOption(copyData)
@@ -37,14 +34,42 @@ const AddNewQuestion = ({ setAddNew }) => {
             })
         }
     }
-
+     
     const SaveData = () => {
-        //console.log(addNewQuestion);
-        setFormData({ ...formData, AddNewQuestionData: { ...formData.AddNewQuestionData, addNewQuestion } })
-        axios.post("http://localhost:5000/AddNewQuestion", addNewQuestion)
+    if(Object.values(addNewQuestion).every(data=>Boolean(data)!==false))
+    {
+        setFormData({ ...formData, AddNewQuestionData: { ...formData.AddNewQuestionData, addNewQuestion } }) 
+        let {AddTechnology,QuestionType,...rest}=addNewQuestion;
+
+        axios.post("http://localhost:5000/AddNewQuestion", {
+           AddTechnology:AddTechnology.value, QuestionType:QuestionType.value, ...rest
+        })
+        toast.success("Data inserted successfully")
+        setAddNew(false)
+        setAddNewQuestion(initialState)
+        setFormData(pre => ({...pre, AddNewQuestionData:{...pre.AddNewQuestionData,newly_question_added:[pre.AddNewQuestionData.newly_question_added + 1]}}))
     }
+    else{
+        toast.error("please fill the all field")  
+    }
+    }
+    const handleSave_create=()=>{
+        if(Object.values(addNewQuestion).every(data=>Boolean(data)!==false))
+        {
+            setFormData({ ...formData, AddNewQuestionData: { ...formData.AddNewQuestionData, addNewQuestion } }) 
+            let {AddTechnology,QuestionType,...rest}=addNewQuestion;
 
-
+            axios.post("http://localhost:5000/AddNewQuestion", {
+               AddTechnology:AddTechnology.value, QuestionType:QuestionType.value, ...rest
+            })
+            toast.success("Data inserted successfully")
+            setAddNewQuestion(initialState)
+            setFormData(pre => ({...pre, AddNewQuestionData:{...pre.AddNewQuestionData,newly_question_added:[pre.AddNewQuestionData.newly_question_added + 1]}}))
+        }
+        else{
+            toast.error("please fill the all field")  
+        }
+    }
     return (
         <>
             <div className='addNewQuestion_box'>
@@ -52,25 +77,29 @@ const AddNewQuestion = ({ setAddNew }) => {
                 <div>
                     <Label label="Technology" className="Tecno_label" />
                     <Select options={AddNew_technology}
-                        onChange={(value) => handleChangeAddNew("AddTechnology", value.value)}
-                        className='add_technology' />
+                        onChange={(value) => handleChangeAddNew("AddTechnology", value)}
+                        className='add_technology' 
+                        value={addNewQuestion.AddTechnology}/>
                 </div>
 
                 <div className='question_type_field'>
                     <Label label="Question_type" className="question_label" />
                     <Select options={AddNewquestion_type}
-                        onChange={(value) => handleChangeAddNew("QuestionType", value.value)}
-                        className='question_type' />
+                        onChange={(value) => handleChangeAddNew("QuestionType", value)}
+                        className='question_type' 
+                        value={addNewQuestion.QuestionType}
+                        />
                 </div>
 
                 <div className='question_title_field'>
                     <Label label="Question_Title" className="question_label" />
                     <input type="text"
                         onChange={(e) => handleChangeAddNew("QuestionTitle", e.target.value)}
+                        value={addNewQuestion.QuestionTitle}
                         className='question_title_input' />
                 </div>
 
-                {addNewQuestion.QuestionType == "mcq" &&
+                {addNewQuestion.QuestionType.value == "mcq" &&
                     <div>
                         <div className='ans_option'><span>Answer Options</span><button className='plus_add_btn' onClick={handleOption}>+</button> </div>
                         {
@@ -97,7 +126,7 @@ const AddNewQuestion = ({ setAddNew }) => {
                 }
                 <div>
                     <button className='create_btn' onClick={SaveData}  >Create</button>
-                    <button className='save_create_btn'>Save & createNow</button>
+                    <button className='save_create_btn' onClick={handleSave_create}>Save & createNow</button>
                     <button className='cancle_btn' onClick={() => setAddNew(false)}>Cancle</button>
                 </div>
             </div>

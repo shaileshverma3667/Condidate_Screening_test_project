@@ -11,23 +11,28 @@ import { toast } from 'react-toastify'
 const RandomQuestionField = () => {
   const [showTab, setShowTab] = useState("left");
   const { formData, setFormData } = useContext(creatAPI)
+  const {RandomQuestionData}=formData
   const handleChange = (e) => {
     const { name, value } = e.target
-
+    if(value<0)
+    {
+      toast("Enter the valid random question")
+    }
     if (name == 'randomq') {
       if (formData.TotalQuestion >= value) {
-        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]: Number(value) } });
+        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]: value } });
       } else {
         toast("Enter the valid number")
       }
     } else {
       if (formData.RandomQuestionData.randomq >= value) {
-        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]: Number(value) } });
+        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value } });
       } else {
         toast("Enter the valid number")
       }
     }
   }
+
  
 
   return (
@@ -40,17 +45,22 @@ const RandomQuestionField = () => {
           <div className='random_box'>
             <div>
               <Label label="Random Question" className={"random_field_label"} />
-              <input type="number" className='random_number_field' onChange={handleChange} name="randomq" />
+              <input type="number" className='random_number_field' value={RandomQuestionData.randomq} onChange={handleChange} name="randomq" />
             </div>
 
             <div className='technology_field'>
               <Label label="Technology" className={"random_field_label"} />
-              <Select options={random_technology} className='random_technology_field' onChange={(e) => setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, "randomTech": e.value } })} />
+              <Select options={random_technology} 
+              className='random_technology_field'
+              value={RandomQuestionData.randomTech}
+              onChange={(e) => setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, "randomTech": e } })} />
             </div>
 
             <div className='noOfmcq_field'>
               <Label label="number of Mcq Question" className={"random_field_label"} />
-              <input type="number" name="noOfMcq" onChange={handleChange} className='noOfMcq_field' placeholder='Enter No of Mcq Question' />
+              <input type="number" name="noOfMcq" value={RandomQuestionData.noOfMcq} 
+              onChange={handleChange} className='noOfMcq_field' 
+              placeholder='Enter No of Mcq Question' />
             </div>
           </div>
           : <p><PredefinedQuestion /></p>

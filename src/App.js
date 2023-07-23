@@ -12,10 +12,11 @@ function App() {
     isMcq: false,
     screeningType: "",
     TotalQuestion:0,
-    RandomQuestionData:{},
+    RandomQuestionData:{randomq:0,randomTech:"",noOfMcq:0},
     PredefindQuestion:{},
-    AddNewQuestionData:{}
+    AddNewQuestionData:{newly_question_added:[0]}
 })
+
   return (
    <>
    <div className='test_title'>Condidate Screening Test Creation </div>
