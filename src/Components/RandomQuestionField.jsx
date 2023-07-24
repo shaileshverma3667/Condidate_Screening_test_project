@@ -19,18 +19,24 @@ const RandomQuestionField = () => {
       toast("Enter the valid random question")
     }
     if (name == 'randomq') {
-      if (formData.TotalQuestion >= value) {
-        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]: value } });
-      } else {
-        toast("Enter the valid number")
+
+    
+      if (Number(value) < Number(formData.TotalQuestion))
+      {
+        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value } });
+      }
+      else
+      {
+        toast.warn("Enter the valid Question Number")
       }
     } else {
       if (formData.RandomQuestionData.randomq >= value) {
-        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value } });
+        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value} });
       } else {
-        toast("Enter the valid number")
+        toast.warn("Enter the valid number")
       }
     }
+    // setFormData({...formData,PredefinedQuestion:{...formData.PredefinedQuestion,totalPre:formData.TotalQuestion-value}})
   }
 
  

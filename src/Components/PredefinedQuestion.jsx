@@ -12,7 +12,7 @@ import axios from 'axios'
 const PredefinedQuestion = () => {
     const [addNew,setAddNew]=useState(false)
     const [searchData,setSearchData]=useState({predefinedTech:[],QuestionType:[]})
-
+    const [clear,setClear]=useState(false)
     const [axiosData, setAxiosData] = useState([])
 
     const {formData,setFormData}=useContext(creatAPI)
@@ -21,6 +21,7 @@ const PredefinedQuestion = () => {
         }
         const handleClear=()=>{
          setSearchData({predefinedTech:[],QuestionType:[]})
+         setClear(!clear)
          }
 
         const handleSearch=()=>{
@@ -67,7 +68,8 @@ const PredefinedQuestion = () => {
     }
         const handleTotalPredefined=(e)=>{
          //  console.log(formData.RandomQuestionData.randomq+formData.PredefindQuestion.totalPre<=formData.TotalQuestion)
-          setFormData({...formData, PredefindQuestion : { ...formData.PredefindQuestion,[e.target.name]:Number( e.target.value)}})
+        // let predefineData=formData.TotalQuestion-formData.RandomQuestionData.randomq
+          setFormData({...formData, PredefindQuestion : { ...formData.PredefindQuestion,[e.target.name]:e.target.value}})
        
         }
 
@@ -85,6 +87,7 @@ const PredefinedQuestion = () => {
          <Label label="Total Number of Predefined Question" className={"total_pre_label"}/>
          <input type='number'
                 name="totalPre" 
+                value={formData.PredefindQuestion.totalPre}
                 onChange={handleTotalPredefined} 
                 className='total_predefined'/>
        </div>
@@ -117,7 +120,7 @@ const PredefinedQuestion = () => {
             <button className='clear_btn' onClick={()=>handleClear()}>Clear</button>
             <button className='add_new_btn' onClick={()=>setAddNew(!addNew)}>Add New Question</button>
         </div>
-        <div><PredefindTable axiosData={axiosData}  setAxiosData={setAxiosData} onHeaderCheckSelection={onHeaderCheckSelection} onClick={onClick}/></div>
+        <div><PredefindTable clear={clear} axiosData={axiosData}  setAxiosData={setAxiosData} onHeaderCheckSelection={onHeaderCheckSelection} onClick={onClick}/></div>
         {
             addNew ? <AddNewQuestion  setAddNew={setAddNew}/> :""
         }

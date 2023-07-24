@@ -12,8 +12,8 @@ function App() {
     isMcq: false,
     screeningType: "",
     TotalQuestion:0,
-    RandomQuestionData:{randomq:0,randomTech:"",noOfMcq:0},
-    PredefindQuestion:{},
+    RandomQuestionData:{randomq:null,randomTech:"",noOfMcq:0},
+    PredefindQuestion:{totalPre:''},
     AddNewQuestionData:{newly_question_added:[0]}
 })
 

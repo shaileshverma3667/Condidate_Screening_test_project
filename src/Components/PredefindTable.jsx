@@ -4,7 +4,7 @@ import axios from 'axios'
 import { creatAPI } from '../App';
 
 
-export default function PredefindTable({axiosData,setAxiosData,onHeaderCheckSelection,onClick}) {
+export default function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onClick}) {
 
 
   const columns = [
@@ -19,10 +19,10 @@ export default function PredefindTable({axiosData,setAxiosData,onHeaderCheckSele
   useEffect(() => {
     axios.get("http://localhost:5000/AddNewQuestion").then((res) => setAxiosData(res.data))
 
-  }, [formData.AddNewQuestionData.newly_question_added[0]])
+  }, [formData.AddNewQuestionData.newly_question_added[0],clear])
   
   return (
-    <div style={{ height: 340, maxWidth: '69%' }}>
+    <div style={{ height: 340, maxWidth: '67%' }}>
       <DataGrid
         rows={axiosData}
         columns={columns}

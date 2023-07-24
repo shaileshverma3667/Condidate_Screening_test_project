@@ -21,6 +21,7 @@ const{formData,setFormData}=useContext(creatAPI)
     {
         e.preventDefault()
         console.log(formData)
+        
     }
     const onChangeTotalNumber=(e)=>{
         if(e.target.value<0)
