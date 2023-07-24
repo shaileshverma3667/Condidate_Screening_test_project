@@ -33,6 +33,7 @@ const PredefinedQuestion = () => {
         const question_type1 = searchData.QuestionType.length !== 0 && QuestionType[0]?.value
         const question_type2 = searchData.QuestionType.length === 2 && QuestionType[1]?.value
 
+        
         if (question_type1) {
             if (question_type2 && technology2) {
               axios.get(`http://localhost:5000/AddNewQuestion?AddTechnology=${technology1}&AddTechnology=${technology2}&QuestionType=${question_type1}&QuestionType=${question_type2}`).then(resp => {
