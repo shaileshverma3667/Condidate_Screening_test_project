@@ -22,7 +22,7 @@ export default function PredefindTable({axiosData,setAxiosData,clear,onHeaderChe
   }, [formData.AddNewQuestionData.newly_question_added[0],clear])
   
   return (
-    <div style={{ height: 340, maxWidth: '67%' }}>
+    <div style={{ height: 340, maxWidth: '68%' }}>
       <DataGrid
         rows={axiosData}
         columns={columns}

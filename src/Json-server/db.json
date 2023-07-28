@@ -34,6 +34,28 @@
       "QuestionTitle": "what is react",
       "options": {},
       "id": 5
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "whatb is mcq ?",
+      "options": {},
+      "correctOption": "option2",
+      "id": 6
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "what is react ?",
+      "options": {},
+      "id": 7
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "programming",
+      "QuestionTitle": "w",
+      "options": {},
+      "id": 8
     }
   ]
 }

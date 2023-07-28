@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./style/RandomQuestion.css"
 import { memo } from 'react'
 import Label from './Label'
@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify'
 const RandomQuestionField = () => {
   const [showTab, setShowTab] = useState("left");
-  const { formData, setFormData } = useContext(creatAPI)
+  const { formData, setFormData} = useContext(creatAPI)
   const {RandomQuestionData}=formData
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -18,28 +18,33 @@ const RandomQuestionField = () => {
     {
       toast("Enter the valid random question")
     }
-    if (name == 'randomq') {
-
-    
-      if (Number(value) < Number(formData.TotalQuestion))
+    if (name == 'randomq'){
+      if (Number(value) <= Number(formData.TotalQuestion))
       {
-        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value } });
+        setFormData((prev)=>({ ...prev, RandomQuestionData: { ...prev.RandomQuestionData, [name]:value } }));
+        setFormData((prev)=>({ ...prev, RandomQuestionData: { ...prev.RandomQuestionData, ["noOfMcq"]:value } }));
+
       }
       else
       {
         toast.warn("Enter the valid Question Number")
       }
     } else {
-      if (formData.RandomQuestionData.randomq >= value) {
+      if (formData.RandomQuestionData.randomq >= Number(value)) {
         setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value} });
+        
+
+
       } else {
         toast.warn("Enter the valid number")
       }
     }
-    // setFormData({...formData,PredefinedQuestion:{...formData.PredefinedQuestion,totalPre:formData.TotalQuestion-value}})
+      
   }
-
  
+  useEffect(()=>{
+   setFormData({...formData,PredefinedQuestion:{...formData.PredefinedQuestion,totalPre:formData.TotalQuestion-formData.RandomQuestionData.randomq}})
+  },[formData.RandomQuestionData.randomq])
 
   return (
     <div className='Question_tab'>
@@ -61,13 +66,26 @@ const RandomQuestionField = () => {
               value={RandomQuestionData.randomTech}
               onChange={(e) => setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, "randomTech": e } })} />
             </div>
-
+              
+            {formData.isMcq!="true" && formData.managedBy!="agent" ?
             <div className='noOfmcq_field'>
               <Label label="number of Mcq Question" className={"random_field_label"} />
               <input type="number" name="noOfMcq" value={RandomQuestionData.noOfMcq} 
               onChange={handleChange} className='noOfMcq_field' 
               placeholder='Enter No of Mcq Question' />
             </div>
+            :<div className='noOfmcq_field'>
+           
+            <input type="number" name="descriptive" value={RandomQuestionData?.descriptive} 
+            onChange={handleChange} className='noOfMcq_field' 
+            placeholder='Enter No of Descriptive Question' />&nbsp;
+
+          
+            <input type="number" name="programing" value={RandomQuestionData?.programming} 
+            onChange={handleChange} className='noOfMcq_field' 
+            placeholder='Enter No of Programing Question' />
+          </div>
+            }
           </div>
           : <p><PredefinedQuestion /></p>
       }

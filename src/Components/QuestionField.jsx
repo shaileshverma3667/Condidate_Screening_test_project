@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./style/QuestionField.css"
 import Creatable from "react-select/creatable"
 import { options } from './selectData'
@@ -16,12 +16,11 @@ const QuestionField = () => {
     const createfield=(inputValue)=>{
             setCreateData((prev)=>([...prev,{"value":inputValue,"label":inputValue}]))
     }
-const{formData,setFormData}=useContext(creatAPI)   
+const{formData,setFormData, addNewForm, setDisabledbtn}=useContext(creatAPI)   
     function handleSubmit(e)
     {
         e.preventDefault()
-        console.log(formData)
-        
+        console.log(formData)   
     }
     const onChangeTotalNumber=(e)=>{
         if(e.target.value<0)
@@ -30,6 +29,13 @@ const{formData,setFormData}=useContext(creatAPI)
          setFormData({ ...formData,[e.target.name]:e.target.value})
        
     }
+    
+    let flag=(Object.values(formData).every(data=>Boolean(data)!==false));
+    let flag2=(Object.values(formData.RandomQuestionData).every(data=>Boolean(data)!==false));
+    
+    useEffect(()=>{
+        flag2 ? setDisabledbtn(true):setDisabledbtn(false)
+    },[flag2])
     return (
         <>
             <div className='container'>
@@ -43,7 +49,7 @@ const{formData,setFormData}=useContext(creatAPI)
                            onChange={onChangeTotalNumber} 
                            placeholder='Enter test name'/>
                     </div>
-
+                    <button className='plus_btn' onClick={addNewForm}>+</button>
                     <div className='select_test_type'>
                          <Label label={"Select test type or add new test type :"} 
                           className={"test_type_label"} />
@@ -72,11 +78,8 @@ const{formData,setFormData}=useContext(creatAPI)
                         <Label label={"Total Number of Question"} className={"totalnoq"} />
                         <input type="number" name="TotalQuestion"  className='totalNumberfield' onChange={onChangeTotalNumber} />
                     </div>
-                     {formData.TotalQuestion? <RandomQuestionField/>:""}
-                    <div className='submit_final_btn_box'>
-                        <button className='submit_btn'>Submit Condidate Test</button>
-                        <button className='final_Submit_btn'>Final Submit</button>
-                    </div>
+                     {(flag && formData.TotalQuestion)? <RandomQuestionField />:""}
+                    
                 </form>
             </div>
         </>

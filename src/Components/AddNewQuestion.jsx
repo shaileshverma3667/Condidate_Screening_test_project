@@ -10,18 +10,26 @@ import { toast } from 'react-toastify'
 
 const AddNewQuestion = ({ setAddNew }) => {
     const { formData, setFormData } = useContext(creatAPI)
-    const [option, setOption] = useState([])
     const initialState={ AddTechnology:"", QuestionType: '', QuestionTitle: '',options: {}}
     const [addNewQuestion, setAddNewQuestion] = useState(initialState)
-    
+
+    const [answerOptions, setAnswerOptions] = useState([])
     //option handle
     const handleOption = () => {
-        setOption([...option, 0])
+     
+       function findMissing(arr) {
+        for (let i = 1; i <= 4; i++)
+            if (!arr.includes(i)) return i;
+         }
+        if(answerOptions.length < 4)
+          setAnswerOptions([...answerOptions, findMissing(answerOptions)])
+        else
+        toast.warning("max option executed!")
     }
-    const handleDelete = (index) => {
-        let copyData = [...option]
-        copyData.splice(index, 1)
-        setOption(copyData)
+
+    //console.log(answerOptions);
+    const handleDelete=(ele)=>{
+        setAnswerOptions(answerOptions.filter((val)=>val!=ele));
     }
     const handleChangeAddNew = (fieldName, value) => {
         if (fieldName.includes('option')) {
@@ -103,9 +111,9 @@ const AddNewQuestion = ({ setAddNew }) => {
                     <div>
                         <div className='ans_option'><span>Answer Options</span><button className='plus_add_btn' onClick={handleOption}>+</button> </div>
                         {
-                            option.map((ele, index) => (
+                            answerOptions.map((ele, index) => (
                                 index < 4 ?
-                                    <div className='minus_btn_field'>
+                                    <div className='minus_btn_field' key={ele}>
                                         <div>
                                             <Label label={`Answer option ${index + 1}`} />
                                                 <input type='text' className='anwerOption'
@@ -116,7 +124,7 @@ const AddNewQuestion = ({ setAddNew }) => {
                                              <input type="radio" onClick={(e) => { setAddNewQuestion(pre => ({ ...pre, "correctOption": `option${index + 1}` })) }}
                                               name={`boxans`} className='AddNew_checkBox' />
                                              <button className='minus_btn_option'
-                                              onClick={() => handleDelete(index)}>-</button>
+                                              onClick={() => handleDelete(ele)}>-</button>
                                         </div>
                                     </div>
                                     : <></>

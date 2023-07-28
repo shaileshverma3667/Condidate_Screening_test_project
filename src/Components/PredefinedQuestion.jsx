@@ -15,7 +15,7 @@ const PredefinedQuestion = () => {
     const [clear,setClear]=useState(false)
     const [axiosData, setAxiosData] = useState([])
 
-    const {formData,setFormData}=useContext(creatAPI)
+    const {formData,setFormData, setDisabledbtn}=useContext(creatAPI)
     function setMultiTech(e,name){
         setSearchData((prev)=>({...prev,[name]:e}))
         }
@@ -77,18 +77,21 @@ const PredefinedQuestion = () => {
         //checkbox selections function is here
        const onHeaderCheckSelection=(data)=>{
             console.log(data,"onHeaderCheckSelection")
+            formData.PredefinedQuestion.totalPre==data.length ?  setDisabledbtn(true):setDisabledbtn(false)
        }
        const onClick=(data)=>{
-        console.log(data.row, " onClick")
+        console.log(data.value, " onClick")
+        
        }
-  return (
+
+        return (
    <>
     <div className='predefined_box'>
        <div>
          <Label label="Total Number of Predefined Question" className={"total_pre_label"}/>
          <input type='number'
                 name="totalPre" 
-                value={formData.PredefindQuestion.totalPre}
+                value={formData.PredefinedQuestion.totalPre}
                 onChange={handleTotalPredefined} 
                 className='total_predefined'/>
        </div>

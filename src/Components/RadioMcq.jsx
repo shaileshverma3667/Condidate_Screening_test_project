@@ -2,13 +2,13 @@ import React from 'react'
 import Label from './Label'
 import Radio from "./Field/Radio"
 import { memo } from 'react'
-import { toast } from 'react-toastify'
+
 const RadioMcq = ({formData,setFormData}) => {
 const handleRadioChange=(e)=>{
      if(e.target.value=="yes")
-        setFormData({...formData, isMcq:true})
+        setFormData({...formData, isMcq:"true"})
      else
-        setFormData({...formData,isMcq:false})
+        setFormData({...formData,isMcq:"false"})
     }
     
   return (
