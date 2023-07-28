@@ -14,6 +14,7 @@ const AddNewQuestion = ({ setAddNew }) => {
     const [addNewQuestion, setAddNewQuestion] = useState(initialState)
 
     const [answerOptions, setAnswerOptions] = useState([])
+   
     //option handle
     const handleOption = () => {
      
@@ -55,7 +56,8 @@ const AddNewQuestion = ({ setAddNew }) => {
         toast.success("Data inserted successfully")
         setAddNew(false)
         setAddNewQuestion(initialState)
-        setFormData(pre => ({...pre, AddNewQuestionData:{...pre.AddNewQuestionData,newly_question_added:[pre.AddNewQuestionData.newly_question_added + 1]}}))
+       
+  setFormData(pre => ({...pre, AddNewQuestionData:{...pre.AddNewQuestionData,newly_question_added:[pre.AddNewQuestionData.newly_question_added + 1]}}))
     }
     else{
         toast.error("please fill the all field")  
@@ -77,6 +79,7 @@ const AddNewQuestion = ({ setAddNew }) => {
         else{
             toast.error("please fill the all field")  
         }
+    
     }
     return (
         <>
@@ -121,7 +124,7 @@ const AddNewQuestion = ({ setAddNew }) => {
                                         </div>
                                         <div className='minus_btn_field'>
                                              <p>Is Correct</p>
-                                             <input type="radio" onClick={(e) => { setAddNewQuestion(pre => ({ ...pre, "correctOption": `option${index + 1}` })) }}
+                                             <input type="radio"  onClick={(e) => { setAddNewQuestion(pre => ({ ...pre, "correctOption": `option${index + 1}` })) }}
                                               name={`boxans`} className='AddNew_checkBox' />
                                              <button className='minus_btn_option'
                                               onClick={() => handleDelete(ele)}>-</button>

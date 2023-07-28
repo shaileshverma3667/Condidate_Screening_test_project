@@ -56,6 +56,34 @@
       "QuestionTitle": "w",
       "options": {},
       "id": 8
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "dhf,g",
+      "options": {},
+      "id": 9
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "afds",
+      "options": {},
+      "id": 10
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "what is operatore in react.",
+      "options": {},
+      "id": 11
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "asdf",
+      "options": {},
+      "id": 12
     }
   ]
 }

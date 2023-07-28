@@ -31,17 +31,18 @@ const RandomQuestionField = () => {
       }
     } else {
       if (formData.RandomQuestionData.randomq >= Number(value)) {
-        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value} });
-        
-
-
+        setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, [name]:value}});
+        if(Number(RandomQuestionData.descriptive)+Number(e.target.value)>Number(RandomQuestionData.randomq)){
+          toast.error("Enter No is less than total random")
+           }
       } else {
         toast.warn("Enter the valid number")
       }
     }
       
   }
- 
+    
+
   useEffect(()=>{
    setFormData({...formData,PredefinedQuestion:{...formData.PredefinedQuestion,totalPre:formData.TotalQuestion-formData.RandomQuestionData.randomq}})
   },[formData.RandomQuestionData.randomq])
@@ -67,7 +68,7 @@ const RandomQuestionField = () => {
               onChange={(e) => setFormData({ ...formData, RandomQuestionData: { ...formData.RandomQuestionData, "randomTech": e } })} />
             </div>
               
-            {formData.isMcq!="true" && formData.managedBy!="agent" ?
+            {formData.isMcq=="true" || formData.managedBy=="agent" ?
             <div className='noOfmcq_field'>
               <Label label="number of Mcq Question" className={"random_field_label"} />
               <input type="number" name="noOfMcq" value={RandomQuestionData.noOfMcq} 
@@ -76,12 +77,12 @@ const RandomQuestionField = () => {
             </div>
             :<div className='noOfmcq_field'>
            
-            <input type="number" name="descriptive" value={RandomQuestionData?.descriptive} 
+            <input type="number" name="descriptive" value={RandomQuestionData.descriptive} 
             onChange={handleChange} className='noOfMcq_field' 
             placeholder='Enter No of Descriptive Question' />&nbsp;
 
           
-            <input type="number" name="programing" value={RandomQuestionData?.programming} 
+            <input type="number" name="programing" value={RandomQuestionData.programming} 
             onChange={handleChange} className='noOfMcq_field' 
             placeholder='Enter No of Programing Question' />
           </div>

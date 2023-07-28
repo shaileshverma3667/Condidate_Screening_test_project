@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import axios from 'axios'
 import { creatAPI } from '../App';
 
 
-export default function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onClick}) {
+function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onClick}) {
 
 
   const columns = [
@@ -15,15 +15,29 @@ export default function PredefindTable({axiosData,setAxiosData,clear,onHeaderChe
   ];
 
   const {formData} = useContext(creatAPI)
+  
 
   useEffect(() => {
     axios.get("http://localhost:5000/AddNewQuestion").then((res) => setAxiosData(res.data))
-
+   
   }, [formData.AddNewQuestionData.newly_question_added[0],clear])
   
+    const getTabularReference=(value)=>{
+
+      if(value?.selectRow){
+           for(let i=1;i<=formData.PredefinedQuestion.totalPre;i++)
+            {
+             value.selectRow(i)
+             console.log(i)
+            }
+           }
+    }
+
+
   return (
     <div style={{ height: 340, maxWidth: '68%' }}>
       <DataGrid
+        apiRef={getTabularReference}
         rows={axiosData}
         columns={columns}
         initialState={{
@@ -41,3 +55,5 @@ export default function PredefindTable({axiosData,setAxiosData,clear,onHeaderChe
     </div>
   );
 }
+
+export default memo(PredefindTable)

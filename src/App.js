@@ -17,10 +17,10 @@ function App() {
     PredefinedQuestion: { totalPre: 0 },
     AddNewQuestionData: { newly_question_added: [0] }
   })
-  console.log(formData);
+
   const [disabledbtn, setDisabledbtn] = useState(false);
 
-  const addNewForm = () => {
+  const addNewForm = () => {   
     setFormCollection([...formCollection, 0])
   }
 
