@@ -1,10 +1,10 @@
-import React, { memo, useContext, useEffect, useRef, useState } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import axios from 'axios'
 import { creatAPI } from '../App';
 
 
-function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onClick}) {
+function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onClick, setSelectData,selectData}) {
 
 
   const columns = [
@@ -16,28 +16,17 @@ function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onC
 
   const {formData} = useContext(creatAPI)
   
-
   useEffect(() => {
     axios.get("http://localhost:5000/AddNewQuestion").then((res) => setAxiosData(res.data))
    
   }, [formData.AddNewQuestionData.newly_question_added[0],clear])
-  
-    const getTabularReference=(value)=>{
 
-      if(value?.selectRow){
-           for(let i=1;i<=formData.PredefinedQuestion.totalPre;i++)
-            {
-             value.selectRow(i)
-             console.log(i)
-            }
-           }
-    }
-
-
+   
   return (
     <div style={{ height: 340, maxWidth: '68%' }}>
       <DataGrid
-        apiRef={getTabularReference}
+
+        rowSelectionModel={selectData}
         rows={axiosData}
         columns={columns}
         initialState={{
@@ -50,7 +39,12 @@ function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onC
         onCellClick={(newSelection) => {
           onClick(newSelection)
        }}
-       onRowSelectionModelChange={(arr)=> onHeaderCheckSelection(arr)}
+       onRowSelectionModelChange={(arr)=>
+        {
+         
+          onHeaderCheckSelection(arr)
+          setSelectData(arr)
+        } }
       />
     </div>
   );

@@ -84,6 +84,427 @@
       "QuestionTitle": "asdf",
       "options": {},
       "id": 12
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "what is virtual dom",
+      "options": {
+        "option1": "java",
+        "option2": "react",
+        "option3": "python",
+        "option4": "Js"
+      },
+      "id": 13
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "what file handling in java.",
+      "options": {
+        "option1": "option"
+      },
+      "id": 14
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "sdgf",
+      "options": {
+        "option1": "a",
+        "option2": "b",
+        "option3": "c",
+        "option4": "d"
+      },
+      "correctOption": "option2",
+      "id": 15
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "erw",
+      "options": {},
+      "id": 16
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "dghd",
+      "options": {},
+      "correctOption": "",
+      "id": 17
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "",
+      "options": {
+        "option1": "a",
+        "option2": "b",
+        "option3": "c",
+        "option4": "d"
+      },
+      "correctOption": "option3",
+      "id": 18
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "wra",
+      "options": {},
+      "correctOption": "option3",
+      "id": 19
+    },
+    {
+      "AddTechnology": "python",
+      "QuestionType": "mcq",
+      "QuestionTitle": "ewrtf",
+      "options": {
+        "option2": ""
+      },
+      "correctOption": "option2",
+      "id": 20
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "sddfgh",
+      "options": {},
+      "correctOption": "option2",
+      "id": 21
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "fdsg",
+      "options": {
+        "option1": "a",
+        "option2": "b",
+        "option3": "c",
+        "option4": "d"
+      },
+      "correctOption": "",
+      "id": 22
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "dsgtfhjk",
+      "options": {},
+      "correctOption": "",
+      "id": 23
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "rwdv",
+      "options": {
+        "option1": "a",
+        "option2": "b",
+        "option3": "c",
+        "option4": "d"
+      },
+      "correctOption": "option2",
+      "id": 24
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "dsgfsxcxs",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 25
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "wqrert",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 26
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "safdfghjk",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 27
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "fdhgd",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 28
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "asdgf",
+      "options": {
+        "option1": "a",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 29
+    },
+    {
+      "AddTechnology": "python",
+      "QuestionType": "mcq",
+      "QuestionTitle": "DFG",
+      "options": {
+        "option1": "A",
+        "option2": "D",
+        "option3": "F",
+        "option4": "G"
+      },
+      "correctOption": "option3",
+      "id": 30
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "fdzgh",
+      "options": {
+        "option1": "true",
+        "option2": "false",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option1",
+      "id": 31
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "programming",
+      "QuestionTitle": "java",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 32
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "programming",
+      "QuestionTitle": "cvbmhnjk",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 33
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "asfdfg",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 34
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "programming",
+      "QuestionTitle": "dawsrfyg",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 35
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "programming",
+      "QuestionTitle": "sdfg",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 36
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "programming",
+      "QuestionTitle": "jh",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 37
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "programming",
+      "QuestionTitle": "dvfgdhd",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 38
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "adsdf",
+      "options": {
+        "option1": "a",
+        "option2": "v",
+        "option3": "a",
+        "option4": "d"
+      },
+      "correctOption": "option2",
+      "id": 39
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "programming",
+      "QuestionTitle": "daf",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 40
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "programming",
+      "QuestionTitle": "dsaf",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 41
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "daf",
+      "options": {
+        "option1": "a",
+        "option2": "b",
+        "option3": "c",
+        "option4": "d"
+      },
+      "correctOption": "option3",
+      "id": 42
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "aderfs",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 43
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "dasfs",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 44
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "dwaesf",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option3",
+      "id": 45
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "asdf",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option3",
+      "id": 46
+    },
+    {
+      "AddTechnology": "java",
+      "QuestionType": "mcq",
+      "QuestionTitle": "awe",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 47
     }
   ]
 }

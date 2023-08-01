@@ -11,13 +11,8 @@
     position: absolute;
     left: 38rem;
     top:4.5rem;
-    height:1.5em;
-    width: 1.5em;
-    background-color: rgb(120, 229, 120);
-    border-radius:50%;
-    text-align: center;
-    line-height: 1.3em;
-    font-size: 20px;
+    /* height:1.5em;
+    width: 3em; */
   }
   .test_title{
     font-size: 30px;
@@ -71,11 +66,12 @@
     color: white;
     border: none;
     background-color: rgb(59, 59, 249);
+    
   }
   .radio_mcq{
     position:absolute;
-    left: 38em;
-    top:12em;
+    left:38em;
+    top:1em;
   }
 
   .submit_final_btn_box{

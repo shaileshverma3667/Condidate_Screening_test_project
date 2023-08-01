@@ -15,6 +15,8 @@ const PredefinedQuestion = () => {
     const [clear,setClear]=useState(false)
     const [axiosData, setAxiosData] = useState([])
 
+    const [selectData,setSelectData]=useState([])
+
     const {formData,setFormData, setDisabledbtn}=useContext(creatAPI)
     function setMultiTech(e,name){
         setSearchData((prev)=>({...prev,[name]:e}))
@@ -124,9 +126,9 @@ const PredefinedQuestion = () => {
             <button className='clear_btn' onClick={()=>handleClear()}>Clear</button>
             <button className='add_new_btn' onClick={()=>setAddNew(!addNew)}>Add New Question</button>
         </div>
-        <div><PredefindTable clear={clear} axiosData={axiosData}  setAxiosData={setAxiosData} onHeaderCheckSelection={onHeaderCheckSelection} onClick={onClick}/></div>
+        <div><PredefindTable clear={clear} axiosData={axiosData}  setAxiosData={setAxiosData} setSelectData={setSelectData} selectData={selectData} onHeaderCheckSelection={onHeaderCheckSelection} onClick={onClick}/></div>
         {
-            addNew ? <AddNewQuestion  setAddNew={setAddNew}/> :""
+            addNew ? <AddNewQuestion  setAddNew={setAddNew} setSelectData={setSelectData} selectData={selectData}/> :""
         }
     </div>
    </>

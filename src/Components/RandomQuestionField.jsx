@@ -57,7 +57,10 @@ const RandomQuestionField = () => {
           <div className='random_box'>
             <div>
               <Label label="Random Question" className={"random_field_label"} />
-              <input type="number" className='random_number_field' value={RandomQuestionData.randomq} onChange={handleChange} name="randomq" />
+              <input type="number" className='random_number_field' 
+              value={RandomQuestionData.randomq} onChange={(e)=>{ handleChange(e)
+                }} name="randomq" />
+                
             </div>
 
             <div className='technology_field'>

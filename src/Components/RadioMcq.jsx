@@ -12,7 +12,7 @@ const handleRadioChange=(e)=>{
     }
     
   return (
-    <>
+    <div style={{position:'relative'}}>
      {
             formData.managedBy === 'agent'
             ?
@@ -22,14 +22,14 @@ const handleRadioChange=(e)=>{
                 <Radio name="mcq" label="No" onChange={handleRadioChange} disabled={true}/>
                 </div>
             :
-                <div className='radio_mcq'>
+                <div className='radio_mcq' style={{width:'150px'}}>
                 <Label label={"Is MCQ"}/>  <br/> 
                 <Radio name="mcq" label="yes" onChange={handleRadioChange}  disabled={false} checked={false}/>&nbsp;
                 <Radio name="mcq" label="No" onChange={handleRadioChange}/>
                 </div>
                 
         }
-    </>
+    </div>
   )
 }
 

@@ -8,14 +8,15 @@ import { creatAPI } from '../App'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const AddNewQuestion = ({ setAddNew }) => {
+const AddNewQuestion = ({ setAddNew,  setSelectData, selectData }) => {
     const { formData, setFormData } = useContext(creatAPI)
-    const initialState={ AddTechnology:"", QuestionType: '', QuestionTitle: '',options: {}}
+    const initialState={ AddTechnology:"", QuestionType: '', QuestionTitle: '',
+    options: {option1:"",option2:"",option3:"",option4:""},correctOption:""}
     const [addNewQuestion, setAddNewQuestion] = useState(initialState)
 
     const [answerOptions, setAnswerOptions] = useState([])
    
-    //option handle
+    //option handle 
     const handleOption = () => {
      
        function findMissing(arr) {
@@ -45,16 +46,22 @@ const AddNewQuestion = ({ setAddNew }) => {
     }
      
     const SaveData = () => {
-    if(Object.values(addNewQuestion).every(data=>Boolean(data)!==false))
-    {
+    if(addNewQuestion.QuestionTitle && addNewQuestion.QuestionType && addNewQuestion.AddTechnology)
+    {   
+        if(addNewQuestion.QuestionType.value === 'mcq' && addNewQuestion.correctOption=='')
+            return toast.error("please fill the all field");
+
         setFormData({ ...formData, AddNewQuestionData: { ...formData.AddNewQuestionData, addNewQuestion } }) 
         let {AddTechnology,QuestionType,...rest}=addNewQuestion;
 
         axios.post("http://localhost:5000/AddNewQuestion", {
            AddTechnology:AddTechnology.value, QuestionType:QuestionType.value, ...rest
-        })
+        }).then(res=>
+            {
+                setSelectData((prev)=>[...prev, res.data.id])
+            })
         toast.success("Data inserted successfully")
-        setAddNew(false)
+       // setAddNew(false)
         setAddNewQuestion(initialState)
        
   setFormData(pre => ({...pre, AddNewQuestionData:{...pre.AddNewQuestionData,newly_question_added:[pre.AddNewQuestionData.newly_question_added + 1]}}))
@@ -63,24 +70,7 @@ const AddNewQuestion = ({ setAddNew }) => {
         toast.error("please fill the all field")  
     }
     }
-    const handleSave_create=()=>{
-        if(Object.values(addNewQuestion).every(data=>Boolean(data)!==false))
-        {
-            setFormData({ ...formData, AddNewQuestionData: { ...formData.AddNewQuestionData, addNewQuestion } }) 
-            let {AddTechnology,QuestionType,...rest}=addNewQuestion;
-
-            axios.post("http://localhost:5000/AddNewQuestion", {
-               AddTechnology:AddTechnology.value, QuestionType:QuestionType.value, ...rest
-            })
-            toast.success("Data inserted successfully")
-            setAddNewQuestion(initialState)
-            setFormData(pre => ({...pre, AddNewQuestionData:{...pre.AddNewQuestionData,newly_question_added:[pre.AddNewQuestionData.newly_question_added + 1]}}))
-        }
-        else{
-            toast.error("please fill the all field")  
-        }
     
-    }
     return (
         <>
             <div className='addNewQuestion_box'>
@@ -136,8 +126,8 @@ const AddNewQuestion = ({ setAddNew }) => {
                     </div>
                 }
                 <div>
-                    <button className='create_btn' onClick={SaveData}  >Create</button>
-                    <button className='save_create_btn' onClick={handleSave_create}>Save & createNow</button>
+                    <button className='create_btn' onClick={()=>{SaveData();setAddNew(false)}}  >Create</button>
+                    <button className='save_create_btn' onClick={SaveData}>Save & createNow</button>
                     <button className='cancle_btn' onClick={() => setAddNew(false)}>Cancle</button>
                 </div>
             </div>

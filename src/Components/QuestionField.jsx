@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./style/QuestionField.css"
 import Creatable from "react-select/creatable"
 import { options } from './selectData'
@@ -10,17 +10,31 @@ import RadioMcq from './RadioMcq'
 import RandomQuestionField from './RandomQuestionField'
 import { creatAPI } from '../App'
 import { toast } from 'react-toastify'
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const QuestionField = () => {
     const [createData,setCreateData]=useState(options)
     const createfield=(inputValue)=>{
             setCreateData((prev)=>([...prev,{"value":inputValue,"label":inputValue}]))
     }
-const{formData,setFormData, addNewForm, setDisabledbtn}=useContext(creatAPI)   
+
+    const [render,setRender]=useState(false);
+    const [formData, setFormData] = useState({
+        testname: "",
+        testType: "",
+        managedBy: "",
+        isMcq: "true",
+        screeningType: "",
+        TotalQuestion: 0,
+        RandomQuestionData: { randomq: 0,randomTech: "", noOfMcq: 0 },
+        PredefinedQuestion: { totalPre: 0 },
+        AddNewQuestionData: { newly_question_added: [0] }
+      })
+    
+const{addNewForm, setDisabledbtn,submit,...rest}=useContext(creatAPI)   
     function handleSubmit(e)
     {
-        e.preventDefault()
-        console.log(formData)   
+        e.preventDefault()  
     }
     const onChangeTotalNumber=(e)=>{
         if(e.target.value<0)
@@ -29,15 +43,22 @@ const{formData,setFormData, addNewForm, setDisabledbtn}=useContext(creatAPI)
          setFormData({ ...formData,[e.target.name]:e.target.value})
        
     }
+
     
     let flag=(Object.values(formData).every(data=>Boolean(data)!==false));
     let flag2=(Object.values(formData.RandomQuestionData).every(data=>Boolean(data)!==false));
     
     useEffect(()=>{
         flag2 ? setDisabledbtn(true):setDisabledbtn(false)
-    },[flag2])
+    },[flag2]);
+
+    useEffect(()=>{
+        render?console.log(formData):setRender(true);
+    },[submit])
+
     return (
         <>
+        <creatAPI.Provider value={{formData, setFormData, setDisabledbtn ,...rest}}>
             <div className='container'>
                     <form onSubmit={handleSubmit}>
                      <div className='test_name'>
@@ -49,7 +70,7 @@ const{formData,setFormData, addNewForm, setDisabledbtn}=useContext(creatAPI)
                            onChange={onChangeTotalNumber} 
                            placeholder='Enter test name'/>
                     </div>
-                    <button className='plus_btn' onClick={addNewForm}>+</button>
+                    <button className='plus_btn' onClick={addNewForm}><AddBoxIcon/></button>
                     <div className='select_test_type'>
                          <Label label={"Select test type or add new test type :"} 
                           className={"test_type_label"} />
@@ -70,8 +91,9 @@ const{formData,setFormData, addNewForm, setDisabledbtn}=useContext(creatAPI)
                     </div>
 
                     <div className='screeningType_field'>
-                        <Select  options={ScreeningType} onChange={(e) => setFormData({ ...formData, "screeningType": e.value })} />
                         <Label label={"Screening Type"} className={"screeningType_label"} />
+                        <Select  options={ScreeningType} onChange={(e) => setFormData({ ...formData, "screeningType": e.value })} />
+                       
                     </div>
 
                     <div className='totalNoQuField'>
@@ -79,9 +101,10 @@ const{formData,setFormData, addNewForm, setDisabledbtn}=useContext(creatAPI)
                         <input type="number" name="TotalQuestion"  className='totalNumberfield' onChange={onChangeTotalNumber} />
                     </div>
                      {(flag && formData.TotalQuestion)? <RandomQuestionField />:""}
-                    
+                    <br/><br/>
                 </form>
             </div>
+        </creatAPI.Provider>
         </>
     )
 }
