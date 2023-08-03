@@ -41,7 +41,7 @@ const RandomQuestionField = () => {
     }
       
   }
-    
+          
 
   useEffect(()=>{
    setFormData({...formData,PredefinedQuestion:{...formData.PredefinedQuestion,totalPre:formData.TotalQuestion-formData.RandomQuestionData.randomq}})

@@ -73,6 +73,10 @@
     left:38em;
     top:1em;
   }
+  input[type=radio] {
+    width: 1.2em;
+    height:1.2em;
+}
 
   .submit_final_btn_box{
     margin-left:10px;

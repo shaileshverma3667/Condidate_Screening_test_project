@@ -78,11 +78,11 @@ const PredefinedQuestion = () => {
 
         //checkbox selections function is here
        const onHeaderCheckSelection=(data)=>{
-            console.log(data,"onHeaderCheckSelection")
+            //console.log(data,"onHeaderCheckSelection")
             formData.PredefinedQuestion.totalPre==data.length ?  setDisabledbtn(true):setDisabledbtn(false)
        }
        const onClick=(data)=>{
-        console.log(data.value, " onClick")
+       //console.log(data.value, " onClick")
         
        }
 

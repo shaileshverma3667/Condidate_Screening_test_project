@@ -23,7 +23,7 @@ const QuestionField = () => {
         testname: "",
         testType: "",
         managedBy: "",
-        isMcq: "true",
+        isMcq: "",
         screeningType: "",
         TotalQuestion: 0,
         RandomQuestionData: { randomq: 0,randomTech: "", noOfMcq: 0 },
@@ -32,6 +32,7 @@ const QuestionField = () => {
       })
     
 const{addNewForm, setDisabledbtn,submit,...rest}=useContext(creatAPI)   
+
     function handleSubmit(e)
     {
         e.preventDefault()  
@@ -41,10 +42,8 @@ const{addNewForm, setDisabledbtn,submit,...rest}=useContext(creatAPI)
          toast.error("Enter number of grater then 0")
          else
          setFormData({ ...formData,[e.target.name]:e.target.value})
-       
     }
 
-    
     let flag=(Object.values(formData).every(data=>Boolean(data)!==false));
     let flag2=(Object.values(formData.RandomQuestionData).every(data=>Boolean(data)!==false));
     
@@ -52,8 +51,11 @@ const{addNewForm, setDisabledbtn,submit,...rest}=useContext(creatAPI)
         flag2 ? setDisabledbtn(true):setDisabledbtn(false)
     },[flag2]);
 
-    useEffect(()=>{
-        render?console.log(formData):setRender(true);
+    useEffect(()=>{   
+     if(render){
+        console.log(formData);toast.success("Submitted successful");
+     }
+     else{setRender(true);}
     },[submit])
 
     return (

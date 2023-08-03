@@ -48,8 +48,16 @@ const AddNewQuestion = ({ setAddNew,  setSelectData, selectData }) => {
     const SaveData = () => {
     if(addNewQuestion.QuestionTitle && addNewQuestion.QuestionType && addNewQuestion.AddTechnology)
     {   
-        if(addNewQuestion.QuestionType.value === 'mcq' && addNewQuestion.correctOption=='')
-            return toast.error("please fill the all field");
+
+        if(addNewQuestion.QuestionType.value === 'mcq')
+        {
+            if(addNewQuestion.correctOption === '')
+                return toast.error("Please fill the required fields.");
+
+            if((Object.values(addNewQuestion.options).some(data=>data=='')))
+                return toast.error("Please fill the required fields."); 
+
+        }
 
         setFormData({ ...formData, AddNewQuestionData: { ...formData.AddNewQuestionData, addNewQuestion } }) 
         let {AddTechnology,QuestionType,...rest}=addNewQuestion;

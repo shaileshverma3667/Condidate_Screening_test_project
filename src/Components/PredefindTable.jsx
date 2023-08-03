@@ -6,7 +6,6 @@ import { creatAPI } from '../App';
 
 function PredefindTable({axiosData,setAxiosData,clear,onHeaderCheckSelection,onClick, setSelectData,selectData}) {
 
-
   const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
     { field: 'QuestionTitle', headerName: 'Question Title', width: 200 },

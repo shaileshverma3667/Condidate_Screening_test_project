@@ -505,6 +505,45 @@
       },
       "correctOption": "option2",
       "id": 47
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "programming",
+      "QuestionTitle": "xzgfh",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "",
+      "id": 48
+    },
+    {
+      "AddTechnology": "python",
+      "QuestionType": "mcq",
+      "QuestionTitle": "sdfsgf",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 49
+    },
+    {
+      "AddTechnology": "react",
+      "QuestionType": "mcq",
+      "QuestionTitle": "asd",
+      "options": {
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "option4": ""
+      },
+      "correctOption": "option2",
+      "id": 50
     }
   ]
 }
